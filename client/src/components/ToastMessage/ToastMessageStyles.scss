@@ -1,0 +1,47 @@
+.toast--message {
+    display: none;
+    align-items: center;
+    position: fixed;
+    border-left: 0.5rem solid blue;
+    border-radius: 0.8rem;
+    top: 1rem;
+    right: 0.5rem;
+    width: 30rem;
+    height: 7rem;
+    background-image: linear-gradient(166deg,#fface8,#00c9ff);
+  
+    .toast--message__icon {
+      padding: 1rem;
+      color: black;
+    }
+  
+  
+    .toast--message--title {
+      font-size: 1.8rem;
+    }
+  
+    .toast--message--des {
+      font-weight: 400;
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 30rem));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+ @keyframes fadeOut{
+    to{
+        opacity: 0;
+    }
+}
+  
+  .toast--message.active {
+    display: flex;
+    animation: slideInLeft ease 0.3s, fadeOut linear 5s;
+  }

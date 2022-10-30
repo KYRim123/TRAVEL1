@@ -1,0 +1,59 @@
+.schedule--wrapper {
+    height: 80rem;
+    padding: 2rem;
+    background-color: white;
+    .schedule__heading {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+    .schedule__list {
+        height: 90%;
+        border-radius: 0.8rem;
+        border: 2px solid #333;   
+        overflow: scroll;     
+        li {
+            margin: 1rem;
+            background-color: var(--green-color);
+            box-shadow: 3px 4px 2px rgb(96, 183, 96);
+            border-radius: 0.8rem;
+            .schedule__item, .schedule__item--content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .schedule__item {
+                img {
+                    height: 10rem;
+                    width: 10rem;
+                    border-radius: 50%;
+                    padding: 0.5rem;
+                }
+                .schedule__item--content {
+                    flex: 1;
+                    h3 {
+                        flex-basis: 20%;
+                        font-size: 2.5rem;
+                        color: var(--blue-letter);
+                        padding: 1rem;
+                    }
+                    p{
+                        flex-basis: 30%;
+                    }
+                }
+                button {
+                    color: white;
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                    margin-right: 1rem;
+                    padding: 1rem 2rem;
+                    border-radius: 0.8rem;
+                    background-color: blue;
+                    &:hover {
+                        background-color: rgb(37, 37, 200);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

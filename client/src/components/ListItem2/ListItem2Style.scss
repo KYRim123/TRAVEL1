@@ -1,0 +1,26 @@
+.listItem2 {
+    overflow-x: scroll;
+    ul {
+        display: flex;
+        gap: 1rem;
+        padding: 2rem;
+        li {
+            padding: 1rem;
+            border-radius: 1.1rem;
+            box-shadow: 0px 5.50776px 22.031px rgba(158, 158, 158, 0.25);
+            border-radius: 22.031px;
+            a {
+                color: #333;
+                font-size: 2rem;
+                span{
+                    font-weight: 300;    
+                }
+                img {
+                    width: 30rem;
+                    height: 20rem;
+                }
+            }
+        }
+    }
+
+}

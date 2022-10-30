@@ -1,0 +1,85 @@
+.listItem3 {
+    margin-top: 1rem;
+
+    .listItem3--ul,
+    .infor,
+    .other {
+        display: flex;
+        align-items: center;
+    }
+
+    .listItem3--ul {
+        overflow: auto;
+        gap: 1.5rem;
+        padding: 1rem;
+
+        .listItem3--li {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 1.6rem;
+            box-shadow: 0px 4.20404px 16.8161px rgba(158, 158, 158, 0.25);
+            .listItem3--img {
+                width: 50rem;
+                height: 30rem;
+            }
+        }
+
+        .infor {
+
+            h4,
+            span {
+                font-size: 2.5rem;
+            }
+
+            h4 {
+                flex: 1;
+                color: #000000;
+                font-weight: 400;
+                line-height: 3.5rem;
+            }
+
+            .icon {
+                font-size: 2rem;
+            }
+        }
+
+        .other {
+            img {
+                padding: 1rem;
+            }
+        }
+
+        .other--infor {
+            padding: 1rem;
+
+            li {
+                list-style-type: circle;
+            }
+        }
+
+        .price--old,
+        .price-new {
+            margin-right: 1rem;
+        }
+
+        .price-new {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .price--old {
+            text-decoration: line-through;
+        }
+        .price--btn {
+            background-color: var(--form-color);
+            color: white;
+            border-radius: .8rem;
+            margin-left: 0.5rem;
+            padding: 1rem;
+            &:hover {
+                opacity: 0.5;
+                cursor: pointer;
+            }
+        }
+    }
+}
