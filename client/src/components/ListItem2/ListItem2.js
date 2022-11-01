@@ -1,20 +1,23 @@
 import './ListItem2Style.scss';
-import {Link} from 'react-router-dom'
-import { useEffect , useState } from 'react';
-import getData from '../../RestApi';
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { fetchApiWeb } from '~/assets/API'
 
 
-function ListItem2({courseApi}) {
 
+function ListItem2({ propertyName }) {
     const [data, setData] = useState([]);
-
-    useEffect(() =>{
-        getData(courseApi, setData)
+    useEffect(() => {
+        fetchApiWeb(propertyName)
+            .then((res) => {
+                setData(res.data[propertyName])
+            })
+            .catch((err) => console.log(err))
     }, []);
 
     return <div className="listItem2">
         <ul>
-           { data && data.map((item, index) =>
+            {data && data.map((item, index) =>
                 <li key={index}>
                     <Link href="/">
                         <img src={item.img} alt="dasda"></img>

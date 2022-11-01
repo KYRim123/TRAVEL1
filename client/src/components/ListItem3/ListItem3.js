@@ -1,20 +1,22 @@
 import { useEffect , useState } from 'react';
+import './ListItem3Style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import icons from '~/assets/icons'
 
-import './ListItem3Style.scss';
 
 import ToastMessage from '../ToastMessage';
-import getData, {addData} from '../../RestApi';
-import {API_SCHEDULE} from "~/assets/API"
+import { fetchApiWeb, createSchedule } from '~/assets/API'
 
 
-function ListItem3({ courseApi }) {
+function ListItem3({ propertyName }) {
     const [data, setData] = useState([]);
 
     useEffect(() =>{
-        getData(courseApi, setData)
+        fetchApiWeb(propertyName)
+            .then((res) => {
+                setData(res.data[propertyName])})
+            .catch((err) => console.log(err))
     }, []);
 
 
@@ -23,7 +25,7 @@ function ListItem3({ courseApi }) {
         let dtBeachs = data[currentIndex]
         let onlyBook = -1;
         if (onlyBook !== currentIndex) {
-            addData(API_SCHEDULE, dtBeachs);
+            createSchedule(dtBeachs);
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');

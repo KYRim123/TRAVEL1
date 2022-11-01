@@ -4,18 +4,18 @@ import ListItem3 from '~/components/ListItem3';
 
 import {imgOffers} from '~/assets/images'
 
-import {API_BEACH_POPULAR, API_ALL_PACKAGE, API_SPECIAL} from "~/assets/API"
+import {DB_BEACH_POP, DB_PACKAGES, DB_SPECIAL} from "~/assets/API"
 
 function Beaches() {
     return <React.Fragment> 
             <div className="popularBeach wide">
                 <h3>Popular Beach Destinations</h3>
-                <ListItem3 courseApi={API_BEACH_POPULAR}/>
+                <ListItem3 propertyName={DB_BEACH_POP}/>
             </div>
             <div className="recentlyViewed wide">
                 <h3>Recently Viewed</h3>
                 <div className='recentlyViewed--container'>
-                    <ListItem3 courseApi={API_ALL_PACKAGE}/>
+                    <ListItem3 propertyName={DB_PACKAGES}/>
                     <div className='recentlyViewed--infor'>
                         <img src={imgOffers.imgRecentViewed} alt="" />
                         <div className="recentlyViewed--content">
@@ -31,12 +31,12 @@ function Beaches() {
 
             <div className="allPackages wide">
                 <h3>All Inclusive Packages!</h3>
-                <ListItem3 courseApi={API_ALL_PACKAGE}/>
+                <ListItem3 propertyName={DB_PACKAGES}/>
             </div>
 
             <div className="special wide">
                 <h3>Honeymoon Freebies Special</h3>
-                <ListItem3 courseApi={API_SPECIAL}/>
+                <ListItem3 propertyName={DB_SPECIAL}/>
             </div>
 
         </React.Fragment>

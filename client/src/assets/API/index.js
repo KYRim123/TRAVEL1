@@ -1,11 +1,27 @@
-export const API_VACATION= "http://localhost:3000/dbVacation"
-export const API_HOTELS= "http://localhost:3000/dbHotel"
-export const API_COMUNITY= "http://localhost:3000/dbComunity"
-export const API_BEACH_POPULAR= "http://localhost:3000/dbBeachPopular"
-export const API_RECENTLY_VIEWED= "http://localhost:3000/dbRecentlyViewed"
-export const API_ALL_PACKAGE= "http://localhost:3000/dballPackages"
-export const API_SPECIAL= "http://localhost:3000/dbspecial"
-export const API_USER= "http://localhost:3000/users"
-export const API_OFFERS= "http://localhost:3000/dboffers"
-export const API_SCHEDULE= "http://localhost:3000/schedule"
-export const API = "https://raw.githubusercontent.com/KYRim123/travel/main/Server/db.json"
+import axios from "axios"
+const URL = "https://63574b2e2712d01e14052710.mockapi.io/dataLuong"
+
+export const DB_VACATION = "dbVacation" 
+export const DB_HOTEL = "dbHotel" 
+export const DB_COMUNITY = "dbComunity" 
+export const DB_BEACH_POP = "dbBeachPopular" 
+export const DB_RE_VIEW = "dbRecentlyViewed" 
+export const DB_PACKAGES = "dballPackages" 
+export const DB_SPECIAL = "dbspecial" 
+export const DB_OFFERS= "dbOffers" 
+export const DB_SCHEDILES = "schedule" 
+export const DB_USERS = "dbusers" 
+
+//web
+export const fetchApiWeb = (propertyName) => axios.get(URL+"/dbTravel/"+propertyName)
+//shedule
+export const fetchApiSchedule = () => axios.get(URL+"/schedule")
+export const deleteSchedule = (id) => axios.delete(URL+"/schedule/" + id)
+export const createSchedule = (payload) => axios.post(URL+"/schedule", payload)
+//account
+export const fetchApiAcc = () => axios.get(URL+"/users")
+export const createAcc = (payload) => axios.post(URL+"/users", payload)
+
+
+
+

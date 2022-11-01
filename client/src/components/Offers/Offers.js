@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
-import getData, { addData } from '~/RestApi';
-import { API_SCHEDULE } from '~/assets/API';
+import { createSchedule, fetchApiWeb, DB_OFFERS } from '~/assets/API';
 
 import './OffersStyle.scss';
 
 import ToastMessage from '../ToastMessage';
 
 
-function Offers({ courseApi }) {
+function Offers() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getData(courseApi, setData)
+        fetchApiWeb(DB_OFFERS)
+            .then((res) => {
+                setData(res.data[DB_OFFERS])
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }, []);
 
 
@@ -20,7 +25,7 @@ function Offers({ courseApi }) {
         let currentIndex = event.target.getAttribute("data")
         let dtOffers = data[currentIndex]
         if (onlyBook !== currentIndex) {
-            addData(API_SCHEDULE, dtOffers);
+            createSchedule(dtOffers)
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');

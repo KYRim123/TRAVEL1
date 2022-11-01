@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
-
+import "./LoginStyles.scss";
 
 import { Link } from "react-router-dom";
 
-import { API_USER } from "~/assets/API";
-import getData from "~/RestApi"
-
-import "./LoginStyles.scss";
-
+import { fetchApiAcc} from "~/assets/API";
 import ToastMessage from "~/components/ToastMessage";
 
 
 function Login() {
     const [account, setAccount] = useState();
     const [user, setUser] = useState([])
+
     useEffect(() => {
-        getData(API_USER, setUser)
+        fetchApiAcc()
+            .then((res) => {
+                setUser(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }, []);
 
     const handleLogin = function (e) {

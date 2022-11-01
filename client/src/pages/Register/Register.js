@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 
 import "./RegisterStyles.scss"
 
-import getData, { addData } from '~/RestApi'
-
-import { API_USER } from '~/assets/API'
-
 import { Link } from 'react-router-dom'
 
 import { imgOffers } from "~/assets/images"
 
 import ToastMessage from '~/components/ToastMessage';
+
+import {fetchApiAcc,createAcc} from '~/assets/API'
 
 
 
@@ -25,7 +23,13 @@ function Register() {
 
 
   useEffect(() => {
-    getData(API_USER, setUser)
+    fetchApiAcc()
+            .then((res) => {
+                setUser(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
   }, []);
 
   function toastMessage() {
@@ -46,7 +50,7 @@ function Register() {
     }
     )
     if (signUpSuccess) {
-      addData(API_USER, account);
+      createAcc(account)
       setContentMessage({
         title: "SignUp Successful !",
         des: "Go to page login",

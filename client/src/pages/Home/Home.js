@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 //scss
 import './homeStyle.scss';
 //layout component
@@ -9,18 +9,19 @@ import Offers from '~/components/Offers';
 import { imgOffers, imgContact } from '~/assets/images/index.js';
 
 //courseApi
-import {API_VACATION, API_HOTELS, API_COMUNITY, API_OFFERS} from "~/assets/API"
+import { DB_COMUNITY, DB_OFFERS, DB_VACATION, DB_HOTEL} from "~/assets/API"
+
 function Home() {
 
     return <React.Fragment>
         <div className='topVacation wide font-black'>
             <h3 className="topVacation-title">Top Vacation Destinations</h3>
-            <ListItem courseApi={API_VACATION} /> 
+            <ListItem propertyName={DB_VACATION} /> 
         </div>
-        <Offers courseApi= {API_OFFERS} />
+        <Offers courseApi= {DB_OFFERS} />
         <div className='tyeVacation wide'>
             <h3 className="tyeVacation-title">Browse by property type</h3>
-            <ListItem courseApi={API_HOTELS}/>
+            <ListItem propertyName={DB_HOTEL}/>
         </div>
         <div className='planTravel wide '>
             <a href="/">
@@ -33,7 +34,7 @@ function Home() {
         </div>
         <div className="travelInOurComunity wide">
             <h3>Connect with other travelers in our community</h3>
-            <ListItem2 courseApi = {API_COMUNITY}/>
+            <ListItem2 propertyName = {DB_COMUNITY}/>
         </div>
         <div className="contact">
             <div className='contact-content'>
