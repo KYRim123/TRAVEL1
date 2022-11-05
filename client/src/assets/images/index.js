@@ -8,4 +8,11 @@ const imgContact = {
     img3: require("../images/imgContact4.png"),
 }
 
-export { imgOffers, imgContact}
+const imgBG = {
+    bgHome: require("../images/bgHome.png"),
+    bgBeachs: require("../images/bgBeachs.jpg"),
+    bgCamping: require("../images/bgCamping.jpg"),
+    bgCountryside: require("../images/bgCountryside.jpg"),
+}
+
+export { imgOffers, imgContact, imgBG}
