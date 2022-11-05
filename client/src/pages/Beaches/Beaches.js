@@ -2,8 +2,6 @@ import React from 'react';
 import './beachesStyles.scss';
 import ListItem3 from '~/components/ListItem3';
 
-import {imgOffers} from '~/assets/images'
-
 import {DB_BEACH_POP, DB_PACKAGES, DB_SPECIAL} from "~/assets/API"
 
 function Beaches() {
@@ -16,16 +14,6 @@ function Beaches() {
                 <h3>Recently Viewed</h3>
                 <div className='recentlyViewed--container'>
                     <ListItem3 propertyName={DB_PACKAGES}/>
-                    <div className='recentlyViewed--infor'>
-                        <img src={imgOffers.imgRecentViewed} alt="" />
-                        <div className="recentlyViewed--content">
-                            <h4 className="recentlyViewed--title">Summer Bonanza!</h4>
-                            <p>Enjoy confortable transfers in shared coaches <br />
-                            Choose from 5 flights per week<br />
-                            Get a free Rapid Antigen Test at selected hotels
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
 

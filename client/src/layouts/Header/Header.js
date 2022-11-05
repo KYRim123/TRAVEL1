@@ -4,28 +4,57 @@ import {faCalendar, faMagnifyingGlass, faUser } from "@fortawesome/free-solid-sv
 //icon
 import IconCategories  from "~/assets/icons"
 import './HeaderStyles.scss';
+import { useState } from "react";
+
 function Header(){
+    const [navInx, setNavInx] = useState(0)
+    const [currentTC, setCurrentTC] = useState('')
+    const navBar = [
+        {link:'/home', name: 'home'}, 
+        {link:'/schedule', name: 'schedule'}, 
+        {link:'/home', name: 'Flights'},
+        {link:'/home', name: 'Packages'}
+    ]
+    
+    const topCategories = [
+        {link: '/beaches', icon: IconCategories.icon1, name: 'Beaches'},
+        {link: '/home', icon: IconCategories.icon2, name: 'Deserts'},
+        {link: '/home', icon: IconCategories.icon3, name: 'Mountains'},
+        {link: '/home', icon: IconCategories.icon4, name: 'Iconic Cities'},
+        {link: '/home', icon: IconCategories.icon5, name: 'Houseboats'},
+        {link: '/home', icon: IconCategories.icon6, name: 'Countryside'},
+        {link: '/home', icon: IconCategories.icon7, name: 'Camping'},
+        {link: '/home', icon: IconCategories.icon8, name: 'Castles'},
+        {link: '/home', icon: IconCategories.icon9, name: 'Skiing'},
+        {link: '/home', icon: IconCategories.icon10, name: 'Tropical'}
+    ]
+
+    
+
     return (
             <div className="background">
                 <header id="header">
-                <div className="header__container">
-                    <div className="header__logo">
-                        <Link to="/home">TRAVEL</Link>
+                    <div className="header__container">
+                        <div className="header__logo">
+                            <Link to="/home">TRAVEL</Link>
+                        </div>
+                        <div className="header__navbar">
+                            <ul>
+                                {
+                                    navBar.map((nav, inx) => (
+                                        <li 
+                                            key={inx}
+                                            onClick={() => setNavInx(inx)}
+                                            className={`header__navbar--link ${inx === navInx ? 'active':''}`}
+                                        >
+                                        <Link to={nav.link}>{nav.name}</Link>
+                                        </li>
+                                    ))
+                                }
+                                <li className="header__navbar--logout"><Link to="/">Logout</Link></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="header__navbar">
-                        <ul>
-                            <li className="header__navbar--active">
-                                <Link to="/home">Home</Link> </li>
-                            <li>
-                                <Link to="/schedule">schedule</Link></li>
-                            <li>
-                                <Link>Flights</Link></li>
-                            <li>
-                                <Link>Packages</Link></li>
-                            <li className="header__navbar--logout"><Link to="/">Logout</Link></li>
-                        </ul>
-                    </div>
-                </div>
                 </header>
                 <div className="content">
                     <div className="content__title"><h1>The whole world <br /> awaits.</h1></div>
@@ -52,66 +81,19 @@ function Header(){
                     <div className='topCate'>
                         <h3>Top categories</h3>
                         <ul>
-                            <li>
-                                <Link to="/beaches">
-                                    <img src={IconCategories.icon1} alt="" />
-                                    <span>Beaches</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon2} alt="" />
-                                    <span>Deserts</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon3} alt="" />
-                                    <span>Mountains</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon4} alt="" />
-                                    <span>Iconic Cities</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon5} alt="" />
-                                    <span>Houseboats</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon6} alt="" />
-                                    <span>Countryside</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon7} alt="" />
-                                    <span>Camping</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon8} alt="" />
-                                    <span>Castles</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon9} alt="" />
-                                    <span>Skiing</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <img src={IconCategories.icon10} alt="" />
-                                    <span>Tropical</span>
-                                </Link>
-                            </li>
+                            {
+                                topCategories.map((item, index) => (
+                                    <li 
+                                        key={index} 
+                                        onClick={() => setCurrentTC(index)}
+                                    >
+                                        <Link to={item.link} style={{opacity: currentTC === index ? '1':''}}>
+                                            <img src={item.icon} alt="topcategories" />
+                                            <span>{item.name}</span>
+                                        </Link>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
                 </div>
