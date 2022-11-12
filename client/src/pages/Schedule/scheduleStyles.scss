@@ -41,16 +41,15 @@
                     }
                 }
                 button {
-                    color: white;
                     font-weight: 600;
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     margin-right: 1rem;
                     padding: 1rem 2rem;
                     border-radius: 0.8rem;
-                    background-color: blue;
+                    background: transparent;
                     &:hover {
-                        background-color: rgb(37, 37, 200);
                         cursor: pointer;
+                        color: red;
                     }
                 }
             }

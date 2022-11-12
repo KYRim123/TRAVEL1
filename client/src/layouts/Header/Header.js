@@ -1,12 +1,10 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {Link} from "react-router-dom";
+
 import './HeaderStyles.scss';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faCalendar, faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons"
-//icon
 import IconCategories  from "~/assets/icons"
-//background
 import {imgBG} from '~/assets/images'
+import Search from "../../components/Search";
 
 function Header(){
     const [navInx, setNavInx] = useState(0)
@@ -35,10 +33,12 @@ function Header(){
     return (
             <div className="header--container">
                 <img className="header--background" src={currentBg} alt="bground"></img>
+
                 <div className="headerContent">
                     <header id="header">
                         <div className="header__container">
-                            <div className="header__logo">
+                            <div 
+                                className="header__logo">
                                 <Link to="/home" onClick={() => setCurrentBg(imgBG.bgHome)}>TRAVEL</Link>
                             </div>
                             <div className="header__navbar">
@@ -59,27 +59,11 @@ function Header(){
                             </div>
                         </div>
                     </header>
+
                     <div className="content wide">
-                        <div className="content__title"><h1>The whole world <br /> awaits.</h1></div>
-                        <div className="content__search">
-                            <FontAwesomeIcon className="content__search--icon" icon={faMagnifyingGlass} />
-                            <input type="text" placeholder="Search destinations, hotels" />
-                            <div className="content__search__button">
-                                <Link href="">
-                                    <FontAwesomeIcon icon={faCalendar} />
-                                    <span>check in</span>
-                                </Link>
-                                <Link href="">
-                                    <FontAwesomeIcon icon={faCalendar} />
-                                    <span>check out</span>
-                                </Link>
-                                <Link href="">
-                                    <FontAwesomeIcon icon={faUser} />
-                                    <span>1 room, 2 adults</span>
-                                </Link>
-                                <button>Search</button>
-                            </div>
-                        </div>
+                        <div className="content__title"><h1>Welcome to  <br /> Viet Nam.</h1></div>
+                        <Search />
+
                         {/* Top categories */}
                         <div className='topCate'>
                             <h3>Top categories</h3>

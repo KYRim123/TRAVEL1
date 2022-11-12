@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './scheduleStyles.scss'
 import { fetchApiSchedule, deleteSchedule} from '~/assets/API'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfo, faTrash } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function Schedule() {
     const [data, setData] = useState([])
@@ -39,10 +42,10 @@ export default function Schedule() {
                                     <p>{item.des || item.start + "*"}</p>
                                 </div>
                                 <button onClick={() => handleDeleteSchedule(item.id)}>
-                                    Delete
+                                    <FontAwesomeIcon icon={faTrash} />
                                 </button>
                                 <button>
-                                    <span>Infor</span>
+                                    <FontAwesomeIcon icon={faInfo} />
                                 </button>
                             </div>
                         </li>
