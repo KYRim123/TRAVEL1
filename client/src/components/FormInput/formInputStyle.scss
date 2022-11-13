@@ -1,0 +1,23 @@
+.formInput {
+    display: flex;
+    flex-direction: column;
+    
+    label {
+        font-size: 2rem;
+        color: var(--form-color);
+        font-weight: 800;
+    }
+    input {
+        font-size: 1.7rem;
+        padding: 1.5rem;
+        border: 1px solid var(--form-color);
+        border-radius: 1rem;
+    }
+    span {
+        color: red;
+        opacity: 0;
+    }
+    input:invalid[focused=true] ~ span{
+        opacity: 0.8;
+    }
+}

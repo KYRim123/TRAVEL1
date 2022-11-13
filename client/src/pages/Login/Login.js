@@ -5,12 +5,36 @@ import { Link } from "react-router-dom";
 
 import { fetchApiAcc} from "~/assets/API";
 import ToastMessage from "~/components/ToastMessage";
+import FormInput from "~/components/FormInput/FormInput";
 
 
 function Login() {
-    const [account, setAccount] = useState();
     const [user, setUser] = useState([])
-
+    const [values, setValues] = useState({
+        userName: "",
+        password: ""
+    });
+    const inputs = [
+        {
+            id: "1",
+            type: "text",
+            name: "userName",
+            label: "UserName",
+            placeholder: "Enter UserName",
+            required: true,
+            errorMessage: ""
+        },
+        {
+            id: "2",
+            type: "password",
+            name: "password",
+            label: "Password",
+            placeholder: "Enter Password",
+            required: true,
+            errorMessage: ""
+        }
+    ]
+   
     useEffect(() => {
         fetchApiAcc()
             .then((res) => {
@@ -21,10 +45,13 @@ function Login() {
             })
     }, []);
 
+    const onChange = (e) => {
+        setValues({...values, [e.target.name]: e.target.value})
+    }
     const handleLogin = function (e) {
         e.preventDefault();
-        user.map((item) => {
-            if (item.username === account.username && item.password === account.password) {
+        user.forEach((item) => {
+            if (item.userName === values.userName && item.password === values.password) {
                 const loginSuccess = document.querySelector('.loginSuccess');
                 loginSuccess.click();
             } else {
@@ -42,20 +69,16 @@ function Login() {
         <div className="login--container">
             <form onSubmit={handleLogin} className="form--login">
                 <h2 className="form--login__title form__title">login travel</h2>
-                <div className="form--login__UserName input-focus-effect">
-                    <input
-                        type="text" required placeholder="Please Enter Phone Number / Email"
-                        onChange={e => setAccount({ ...account, username: e.target.value })}
+
+                {inputs.map(input => 
+                    <FormInput 
+                        key={input.id} 
+                        value={values[input.name]} 
+                        onChange={onChange} 
+                        {...input}
                     />
-                    <label>username</label>
-                </div>
-                <div className="form--login__Password input-focus-effect">
-                    <input
-                        type="password" required placeholder="Please Enter Password"
-                        onChange={e => setAccount({ ...account, password: e.target.value })}
-                    />
-                    <label>password</label>
-                </div>
+                )}
+
                 <div className="link--login--signUp">
                     <Link to="/register">Sign up ?</Link>
                 </div>
