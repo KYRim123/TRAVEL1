@@ -2,7 +2,7 @@ import React from 'react';
 import './beachesStyles.scss';
 import ListItem3 from '~/components/ListItem3';
 
-import {DB_BEACH_POP, DB_PACKAGES, DB_SPECIAL} from "~/assets/API"
+import {DB_BEACH_POP, DB_RE_VIEW, DB_PACKAGES,DB_SPECIAL} from "~/assets/API"
 
 function Beaches() {
     return <React.Fragment> 
@@ -13,7 +13,7 @@ function Beaches() {
             <div className="recentlyViewed wide">
                 <h3>Recently Viewed</h3>
                 <div className='recentlyViewed--container'>
-                    <ListItem3 propertyName={DB_PACKAGES}/>
+                    <ListItem3 propertyName={DB_RE_VIEW}/>
                 </div>
             </div>
 
