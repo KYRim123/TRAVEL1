@@ -58,7 +58,7 @@ function Offers() {
         <ToastMessage
             title="Add successful !"
             des="Please check your schedule!"
-            icon="false"
+            icon="success"
         />
     </div>
 }

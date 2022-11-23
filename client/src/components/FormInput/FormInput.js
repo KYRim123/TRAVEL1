@@ -5,7 +5,7 @@ import './formInputStyle.scss'
 function FormInput(props) {
     const [focused, setFocused] = useState(false)
     const {label, onChange, errorMessage, ...inputProps} = props
-    const handleFocused = (e)=> {
+    const handleFocused = ()=> {
         setFocused(true)
     }
     return (

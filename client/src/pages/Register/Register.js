@@ -46,7 +46,7 @@ function Register() {
     {
       id: "3",
       name: "password",
-      type: "text",
+      type: "password",
       placeholder: "Enter password",
       errorMessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
       label: "Password",
@@ -56,7 +56,7 @@ function Register() {
     {
       id: "4",
       name: "confirmPassword",
-      type: "text",
+      type: "password",
       placeholder: "Confirm password",
       errorMessage: "Password don't match!",
       label: "Confirm password",
