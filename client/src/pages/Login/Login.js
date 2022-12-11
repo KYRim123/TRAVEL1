@@ -3,7 +3,7 @@ import "./LoginStyles.scss";
 
 import { Link } from "react-router-dom";
 
-import { fetchApiAcc} from "~/assets/API";
+import {fetchApi} from "~/assets/API";
 import ToastMessage from "~/components/ToastMessage";
 import FormInput from "~/components/FormInput/FormInput";
 
@@ -14,6 +14,7 @@ function Login() {
         userName: "",
         password: ""
     });
+    //setting inputs
     const inputs = [
         {
             id: "1",
@@ -34,24 +35,25 @@ function Login() {
             errorMessage: ""
         }
     ]
-   
+   //lay du lieu tu server
     useEffect(() => {
-        fetchApiAcc()
+        fetchApi('user')
             .then((res) => {
-                setUser(res.data)
+                setUser(res.val())
             })
             .catch((err) => {
                 console.log(err);
             })
     }, []);
-
+    //set du lieu nhap tu form
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value})
     }
+    //kiem tra du lieu dang nhap
     const handleLogin = function (e) {
         e.preventDefault();
-        user.forEach((item) => {
-            if (item.userName === values.userName && item.password === values.password) {
+        for(const item in user) {
+            if (user[item].userName === values.userName && user[item].password === values.password) {
                 const loginSuccess = document.querySelector('.loginSuccess');
                 loginSuccess.click();
             } else {
@@ -62,7 +64,7 @@ function Login() {
                 }, 8000)
             }
         }
-        )
+       
     }
 
     return <div className="login">

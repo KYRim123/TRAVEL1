@@ -1,17 +1,32 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./ListItemStyle.scss";
-import { fetchApiWeb } from '~/assets/API'
+import { fetchApiWeb, fetchApi} from '~/assets/API'
 
 function ListItem({propertyName}) {
     const [data, setData] = useState([]);
 
+    //get data from  api 
+
+    // useEffect(() => {
+    //     fetchApiWeb(propertyName)
+    //         .then((res) => {
+    //             setData(res.data[propertyName])
+    //             console.log(res.data[propertyName])
+    //         })
+    //         .catch((err) => console.log(err))
+    // }, []);
+
+    //get data from firebase
     useEffect(() => {
-        fetchApiWeb(propertyName)
+        fetchApi(propertyName)
             .then((res) => {
-                setData(res.data[propertyName])})
-            .catch((err) => console.log(err))
-    }, []);
+                setData(res.val());
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     return <div className="listItem">
         <ul className="listItem--ul">

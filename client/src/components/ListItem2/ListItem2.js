@@ -1,19 +1,32 @@
 import './ListItem2Style.scss';
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { fetchApiWeb } from '~/assets/API'
+import { fetchApiWeb, fetchApi } from '~/assets/API'
 
 
 
 function ListItem2({ propertyName }) {
     const [data, setData] = useState([]);
+    //get data from api
+    // useEffect(() => {
+    //     fetchApiWeb(propertyName)
+    //         .then((res) => {
+    //             setData(res.data[propertyName])
+    //         })
+    //         .catch((err) => console.log(err))
+    // }, []);
+
+    //get data from firebase
+
     useEffect(() => {
-        fetchApiWeb(propertyName)
+        fetchApi(propertyName)
             .then((res) => {
-                setData(res.data[propertyName])
+                setData(res.val());
             })
-            .catch((err) => console.log(err))
-    }, []);
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     return <div className="listItem2">
         <ul>

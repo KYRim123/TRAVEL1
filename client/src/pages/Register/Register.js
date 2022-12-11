@@ -5,17 +5,20 @@ import "./RegisterStyles.scss"
 import { Link } from 'react-router-dom'
 
 
+
 import ToastMessage from '~/components/ToastMessage';
 
-import {fetchApiAcc, createAcc} from '~/assets/API'
+import {fetchApi, newAccount} from '~/assets/API'
 import FormInput from '~/components/FormInput/FormInput';
 
+import { v4 as uuidv4 } from 'uuid';
 
 
 function Register() {
   const [user, setUser] = useState([])
 
   const [values, setValues] = useState({
+      id: uuidv4(),
       userName: "",
       email: "",
       password: "",
@@ -80,13 +83,13 @@ function Register() {
   }
 
   useEffect(() => {
-    fetchApiAcc()
-            .then((res) => {
-                setUser(res.data)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+    fetchApi('user')
+      .then((res) => {
+          setUser(res.val())
+      })
+      .catch((err) => {
+          console.log(err);
+      })
   }, []);
 
   const onChange = (e)=>{
@@ -97,7 +100,7 @@ function Register() {
   const handleSignUp = function (e) {
     e.preventDefault();
     let checkUser = false
-    for(const element of user ) {
+    for(const element in user ) {
       if(element.userName === values.userName) {
         checkUser=true
       }
@@ -111,7 +114,9 @@ function Register() {
       })
       toastMessage()
     } else {
-      createAcc(values)
+      //them tai khoan vao database
+      newAccount(values.id,values)
+      //show toast
       setpropsToast({
         title: "SignUp Successful !",
         des: "Go to page login",

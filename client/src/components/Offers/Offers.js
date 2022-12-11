@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createSchedule, fetchApiWeb, DB_OFFERS } from '~/assets/API';
+import { createSchedule, DB_OFFERS, fetchApi } from '~/assets/API';
 
 import './OffersStyle.scss';
 
@@ -8,24 +8,23 @@ import ToastMessage from '../ToastMessage';
 
 function Offers() {
     const [data, setData] = useState([]);
-
+    
     useEffect(() => {
-        fetchApiWeb(DB_OFFERS)
+        fetchApi(DB_OFFERS)
             .then((res) => {
-                setData(res.data[DB_OFFERS])
+                setData(res.val());
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, []);
-
+    }, [])
 
     function clickBookNow(event) {
         let onlyBook = -1;
         let currentIndex = event.target.getAttribute("data")
         let dtOffers = data[currentIndex]
         if (onlyBook !== currentIndex) {
-            createSchedule(dtOffers)
+            createSchedule(data[currentIndex].id,dtOffers)
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');

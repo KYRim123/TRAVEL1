@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import './scheduleStyles.scss'
-import { fetchApiSchedule, deleteSchedule} from '~/assets/API'
+import { fetchApi, deleteSchedule, DB_SCHEDULES} from '~/assets/API'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Schedule() {
     const [data, setData] = useState([])
+    
     useEffect(() => {
-        fetchApiSchedule()
+        fetchApi(DB_SCHEDULES)
             .then((res) => {
-                setData(res.data)
+                setData(res.val())
             })
             .catch((err) => console.log(err))
     }, [])
@@ -27,12 +28,14 @@ export default function Schedule() {
             })
     }
 
+    console.log(data);
+
     return (
         <div className='schedule--wrapper'>
             <h3 className="schedule__heading">Your schedule</h3>
             <ul className='schedule__list'>
                 {
-                    data.map((item, index) => (
+                   data && data.map((item, index) => (
                         <li key={index}>
                             <div className="schedule__item">
                                 <img src={item.img} alt="imgSchedule" />

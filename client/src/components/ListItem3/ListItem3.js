@@ -6,18 +6,22 @@ import icons from '~/assets/icons'
 
 
 import ToastMessage from '../ToastMessage';
-import { fetchApiWeb, createSchedule } from '~/assets/API'
+import { createSchedule, fetchApi} from '~/assets/API'
 
 
 function ListItem3({ propertyName }) {
     const [data, setData] = useState([]);
 
-    useEffect(() =>{
-        fetchApiWeb(propertyName)
+    //get data from firebase
+    useEffect(() => {
+        fetchApi(propertyName)
             .then((res) => {
-                setData(res.data[propertyName])})
-            .catch((err) => console.log(err))
-    }, []);
+                setData(res.val());
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [propertyName])
 
 
     function clickBookNow(event) {
@@ -25,7 +29,7 @@ function ListItem3({ propertyName }) {
         let dtBeachs = data[currentIndex]
         let onlyBook = -1;
         if (onlyBook !== currentIndex) {
-            createSchedule(dtBeachs);
+            createSchedule(data[currentIndex].id,dtBeachs);
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');
