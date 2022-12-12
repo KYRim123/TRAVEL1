@@ -1,16 +1,16 @@
 import Categories from '~/components/Categories'
 import './beachesStyles.scss';
 
-import {DB_BEACH_POP, DB_RE_VIEW, DB_PACKAGES,DB_SPECIAL} from "~/assets/API"
+import {DB_CA_BEACHES} from "~/assets/API"
 
 function Beaches() {
     return (
         <div>
             <Categories
-                dataPop = {DB_BEACH_POP}
-                dataRe = {DB_RE_VIEW}
-                dataPac = {DB_PACKAGES}
-                dataSpec = {DB_SPECIAL}
+                dataPop = {DB_CA_BEACHES + "/popular"}
+                dataRe = {DB_CA_BEACHES + "/recently"}
+                dataPac = {DB_CA_BEACHES + "/allPackage"}
+                dataSpec = {DB_CA_BEACHES + "/special"}
             />
         </div>
     )

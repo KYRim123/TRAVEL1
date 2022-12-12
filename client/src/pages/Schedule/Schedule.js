@@ -17,8 +17,8 @@ export default function Schedule() {
     }, [])
 
     function handleDeleteSchedule(id) {
-        const newData = data.filter(data => data.id !== id);
-        setData(newData);
+        const {[id]:removeProperty, ...dataRest} = data
+        setData(dataRest)
         deleteSchedule(id)
             .then(() => {
                 console.log("delete shedule successful!");
@@ -28,23 +28,23 @@ export default function Schedule() {
             })
     }
 
-    console.log(data);
 
     return (
         <div className='schedule--wrapper'>
             <h3 className="schedule__heading">Your schedule</h3>
             <ul className='schedule__list'>
                 {
-                   data && data.map((item, index) => (
+                  data && Object.keys(data).map((item, index) => {
+                    return (
                         <li key={index}>
                             <div className="schedule__item">
-                                <img src={item.img} alt="imgSchedule" />
+                                <img src={data[item].img} alt="imgSchedule" />
                                 <div className='schedule__item--content'>
-                                    <h3>{item.title || item.name}</h3>
-                                    <p>{item.heading || item.time}</p>
-                                    <p>{item.des || item.start + "*"}</p>
+                                    <h3>{data[item].title || data[item].name}</h3>
+                                    <p>{data[item].heading || data[item].time}</p>
+                                    <p>{data[item].des || data[item].start + "*"}</p>
                                 </div>
-                                <button onClick={() => handleDeleteSchedule(item.id)}>
+                                <button onClick={() => handleDeleteSchedule(item)}>
                                     <FontAwesomeIcon icon={faTrash} />
                                 </button>
                                 <button>
@@ -52,7 +52,8 @@ export default function Schedule() {
                                 </button>
                             </div>
                         </li>
-                    ))
+                    )
+                   })
                 }
             </ul>
         </div>

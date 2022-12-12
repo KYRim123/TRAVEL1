@@ -18,16 +18,16 @@ function Header(){
     ]
     
     const topCategories = [
-        {link: '/beaches', icon: IconCategories.icon1, name: 'Beaches', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon2, name: 'Deserts', bachground: imgBG.bgHome},
-        {link: '/home', icon: IconCategories.icon3, name: 'Mountains', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon4, name: 'Iconic Cities', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon5, name: 'Houseboats', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon6, name: 'Countryside' , bachground: imgBG.bgCountryside},
-        {link: '/home', icon: IconCategories.icon7, name: 'Camping', bachground: imgBG.bgCamping},
-        {link: '/home', icon: IconCategories.icon8, name: 'Castles', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon9, name: 'Skiing', bachground: imgBG.bgBeachs},
-        {link: '/home', icon: IconCategories.icon10, name: 'Tropical', bachground: imgBG.bgBeachs}
+        {link: '/beaches', icon: IconCategories.icon1, name: 'Beaches', bachground: imgBG.bgBeaches},
+        {link: '/camping', icon: IconCategories.icon7, name: 'Camping', bachground: imgBG.bgCamping},
+        {link: '/beaches', icon: IconCategories.icon3, name: 'Mountains', bachground: imgBG.bgMountains},
+        {link: '/beaches', icon: IconCategories.icon6, name: 'Countryside' , bachground: imgBG.bgCountryside},
+        {link: '/beaches', icon: IconCategories.icon4, name: 'Iconic Cities', bachground: imgBG.bgBeaches},
+        {link: '/beaches', icon: IconCategories.icon5, name: 'Houseboats', bachground: imgBG.bgBeaches},
+        {link: '/beaches', icon: IconCategories.icon8, name: 'Castles', bachground: imgBG.bgBeaches},
+        {link: '/beaches', icon: IconCategories.icon9, name: 'Skiing', bachground: imgBG.bgBeaches},
+        {link: '/beaches', icon: IconCategories.icon2, name: 'Deserts', bachground: imgBG.bgDeserts},
+        {link: '/beaches', icon: IconCategories.icon10, name: 'Tropical', bachground: imgBG.bgBeaches}
     ]
 
     return (

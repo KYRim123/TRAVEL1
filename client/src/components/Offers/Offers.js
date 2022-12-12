@@ -24,7 +24,7 @@ function Offers() {
         let currentIndex = event.target.getAttribute("data")
         let dtOffers = data[currentIndex]
         if (onlyBook !== currentIndex) {
-            createSchedule(data[currentIndex].id,dtOffers)
+            createSchedule(dtOffers)
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');

@@ -10,9 +10,11 @@ const imgContact = {
 
 const imgBG = {
     bgHome: require("../images/bgHome.png"),
-    bgBeachs: require("../images/bgBeachs.jpg"),
+    bgBeaches: require("../images/bgBeachs.jpg"),
     bgCamping: require("../images/bgCamping.jpg"),
     bgCountryside: require("../images/bgCountryside.jpg"),
+    bgDeserts: require("../images/bgDeserts.jpg"),
+    bgMountains: require("../images/bgMountains.jpg"),
 }
 
 export { imgOffers, imgContact, imgBG}

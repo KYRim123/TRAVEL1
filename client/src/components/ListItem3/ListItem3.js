@@ -29,7 +29,7 @@ function ListItem3({ propertyName }) {
         let dtBeachs = data[currentIndex]
         let onlyBook = -1;
         if (onlyBook !== currentIndex) {
-            createSchedule(data[currentIndex].id,dtBeachs);
+            createSchedule(dtBeachs);
             onlyBook = currentIndex;
             const AddSchedule = document.querySelector('.toast--message')
             AddSchedule.classList.add('active');
